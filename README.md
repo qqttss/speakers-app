@@ -5,6 +5,7 @@ The Conference App is built with MEAN.JS (version:  0.42), which  is a full-stac
 By this app, you can sign up, log in, and create speakers. The app also allows you to view, edit, and delete speakers.
 
 How to use the app?
+
 1) Clone the app into your local drive
 
 2) Run npm install and bower install to install Node.js dependencies
