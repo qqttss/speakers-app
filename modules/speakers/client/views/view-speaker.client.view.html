@@ -1,0 +1,29 @@
+<section>
+  <div class="page-header">
+    <h1 ng-bind="vm.speaker.name"></h1>
+    <h4 ng-bind="vm.speaker.title"></h4>
+    <h4>TIME: {{ vm.speaker.schedule | date:"MM/dd/yyyy 'at' h:mma" }}</h4>
+    <p>The Speaker: {{ vm.speaker.description }}</p>
+  </div>
+  <div class="pull-right"
+       ng-show="vm.speaker.isCurrentUserOwner">
+    <a class="btn btn-primary"
+       ui-sref="speakers.edit({ speakerId: vm.speaker._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span ng-bind="vm.speaker.created | date:'mediumDate'"></span>
+      by
+      <span ng-if="vm.speaker.user"
+            ng-bind="vm.speaker.user.displayName"></span>
+      <span ng-if="!vm.speaker.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.speaker.content"></p>
+</section>

@@ -1,0 +1,56 @@
+<section>
+  <div class="jumbotron text-center">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
+        <img alt="MEAN.JS" class="img-responsive text-center" src="modules/core/client/img/brand/logo.png" />
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <p class="lead">
+        Open-Source Full-Stack Solution For MEAN Applications
+      </p>
+    </div>
+    <div class="row">
+      <p>
+        <a class="btn btn-primary btn-lg" href="http://meanjs.org" target="_blank">Learn more</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section  ng-controller="HomeController" data-ng-init="find()">
+  <div class="page-header">
+    <h1>Speakers</h1>
+  </div>
+  <div class="list-group">
+    <!-- Add filter to list speakers by created date -->
+    <a data-ng-repeat="speaker in speakers | filter:query
+    | orderBy: 'created'"
+       ui-sref="speakers.view({ speakerId: speaker._id })"
+       class="list-group-item">
+      <img gravatar-src-once="speaker.email"
+           class="list-group-item"
+           style="float:left; margin-right: 10px;">
+      <h4 class="list-group-item-heading"> 
+        <span data-ng-bind="speaker.name"></span></h4>
+      <h5 class="list-group-item-heading text-primary">
+      Track : <span data-ng-bind="speaker.title"></span></h5>
+      <p> Description: <span data-ng-bind="speaker.description"></span></p>
+      <p class="list-group-item"> 
+        <span>TIME: {{ speaker.schedule | date:"MM/dd/yyyy 'at' h:mma" }}</span>
+      </p>
+    </a>
+  </div>
+  <!-- Add a simple message if don't have any speaker yet
+  -->
+  <div class="alert alert-warning text-center"
+       data-ng-hide="!speakers.$resolved || speakers.length">
+    No Speakers yet, why don't you
+    <a href="/#!/speakers/create">create one</a>?
+  </div>
+</section>
+
+<footer>
+  <p class="text-center">Conference &copy; 2014</p>
+</footer>
